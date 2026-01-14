@@ -1,16 +1,19 @@
 import httpx
 
-date_authentication = {
-    "email": "user@example10cd.com",
+test_payload = {
+    "email": "user@example.com",
     "password": "string"
 }
-response_authentication = httpx.post("http://localhost:8000/api/v1/authentication/login", json=date_authentication)
-# print(response_authentication.json())
-access_token = response_authentication.json()['token']['accessToken']
-data_headers = {
-    "Authorization": "Bearer " + access_token,
-    "accept": "application/json"
+response_login = httpx.post("http://localhost:8000/api/v1/authentication/login", json=test_payload)
+print(response_login.status_code)
+print(response_login.json())
+authentication_data = response_login.json()
+accessToken_data = response_login.json()['token']['accessToken']
+
+headers_Authorization = {
+    "Authorization": f"Bearer {accessToken_data}"
 }
-response_users_me = httpx.get("http://localhost:8000/api/v1/users/me", headers=data_headers)
-print(response_users_me.json())
-print(response_users_me.status_code)
+
+response = httpx.get("http://localhost:8000/api/v1/users/me", headers=headers_Authorization)
+print(response.status_code)
+print(response.json())
