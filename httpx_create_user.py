@@ -1,4 +1,17 @@
 import httpx
+
+# payload = {
+#   "email": "11user@example.com",
+#   "password": "string",
+#   "lastName": "Userov",
+#   "firstName": "11User",
+#   "middleName": "Userovich"
+# }
+#
+# response = httpx.post("http://localhost:8000/api/v1/users", json=payload)
+# print(response.status_code)
+# print(response.json())
+
 from tools.fakers import get_random_mail
 
 
@@ -14,3 +27,4 @@ request_create_user = httpx.post("http://localhost:8000/api/v1/users", json=payl
 print(f"mail: {get_random_mail()}")
 print(request_create_user.status_code)
 print(request_create_user.json())
+
