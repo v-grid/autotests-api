@@ -26,4 +26,5 @@ client =httpx.Client(
 
 )
 response = client.get("/api/v1/users/me")
-print(response.json())
+print("Get user me data", response.json())
+
