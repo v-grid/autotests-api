@@ -47,7 +47,7 @@ class APIClient:
         """
         return self.client.patch(url, json=json, data=data, files=files)
 
-    def delitem(self, url: URL | str,)-> Response:
+    def delete(self, url: URL | str,)-> Response:
         """
                 Выполняет DELETE-запрос (удаление данных).
                 :param url: URL-адрес эндпоинта.
